@@ -51,8 +51,8 @@ namespace MyNotes
             openNotesPanel.ForeColor = Color.FromArgb(238, 108, 77);
 
             todoPanel.Visible = false;
-            notePanelRight.Visible = true;
-            notePanelLeft.Visible = true;
+            //notePanelRight.Visible = true;
+            //notePanelLeft.Visible = true;
         }
 
         private void openTodoPanel_Click(object sender, EventArgs e)
@@ -65,10 +65,10 @@ namespace MyNotes
             openTodoPanel.ForeColor = Color.FromArgb(238, 108, 77);
 
             todoPanel.Visible = true;
-            notePanelRight.Visible = false;
-            notePanelLeft.Visible = false;
+            //notePanelRight.Visible = false;
+            //notePanelLeft.Visible = false;
         }
-        
+
         // Moving selectedPaneLine with
         private void selectedPaneLineMove_Elapsed(object sender, ElapsedEventArgs e)
         {
@@ -94,6 +94,17 @@ namespace MyNotes
                     selectedPaneLine.Left -= 5;
                 }
             }
+        }
+
+        // Change color of new button. create new todo or note.
+        private void createNewButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            createNewButton.Image = MyNotes.Properties.Resources.plus_02;
+        }
+
+        private void createNewButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            createNewButton.Image = MyNotes.Properties.Resources.plus_01;
         }
     }
 }
