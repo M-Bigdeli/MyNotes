@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace MyNotes
 {
@@ -16,9 +17,60 @@ namespace MyNotes
         public Index()
         {
             InitializeComponent();
+
+            show_todos();
         }
 
         private bool todo_panel_enabled = true;
+
+        // Connect to access DB.
+        private OleDbConnection connect_db =
+            new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\Projecs\\MyNotes\\MyNotes\\DB.mdb;");
+
+        // Get todo & notes data from DB.
+        private OleDbDataReader get_data()
+        {
+            connect_db.Open();
+            OleDbCommand select = new OleDbCommand();
+            select.Connection = connect_db;
+            select.CommandText = "Select * From Todo;";
+            OleDbDataReader reader = select.ExecuteReader();
+            return reader;
+        }
+
+        // Create checkbox for todos.
+        private void show_todos()
+        {
+            OleDbDataReader data = get_data();
+
+            foreach (CheckBox i in todoPanel.Controls.OfType<CheckBox>().ToList())
+            {
+                todoPanel.Controls.Remove(i);
+            }
+
+            CheckBox todo;
+            int y = 15;
+            while (data.Read())
+            {
+                todo = new CheckBox();
+                todo.Name = "todo_" + data[0].ToString();
+                todo.Text = data[2].ToString();
+                todo.Top = y;
+                y = y + 35 + 15;
+                todo.Left = 15;
+                todo.Width = 710;
+                todo.Height = 35;
+                
+                todo.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
+                todo.BackColor = Color.FromArgb(152, 193, 217);
+                todo.Cursor = Cursors.Hand;
+                todo.Margin = new Padding(0);
+                todo.TabStop = false;
+                todo.UseVisualStyleBackColor = false;
+                todoPanel.Controls.Add(todo);
+            }
+            connect_db.Close();
+        }
 
         // openNotesPanel & openTodoPanel enter.
         private void openPanel_MouseEnter(object sender, EventArgs e)
@@ -105,6 +157,13 @@ namespace MyNotes
         private void createNewButton_MouseUp(object sender, MouseEventArgs e)
         {
             createNewButton.Image = MyNotes.Properties.Resources.plus_01;
+
+            connect_db.Open();
+            OleDbCommand cmd = new OleDbCommand("INSERT INTO Todo ( todo_text , is_done ) VALUES ('dffhdf' , 1)",
+                connect_db);
+            cmd.ExecuteNonQuery();
+            connect_db.Close();
+            show_todos();
         }
     }
 }

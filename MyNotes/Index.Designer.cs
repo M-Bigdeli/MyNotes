@@ -37,10 +37,13 @@
             this.openTodoPanel = new System.Windows.Forms.Button();
             this.selectedPaneLineMove = new System.Timers.Timer();
             this.todoPanel = new System.Windows.Forms.Panel();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.navbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.createNewButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.selectedPaneLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.selectedPaneLineMove)).BeginInit();
+            this.todoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // navbar
@@ -137,11 +140,36 @@
             // 
             this.todoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.todoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(251)))), ((int)(((byte)(252)))));
+            this.todoPanel.Controls.Add(this.vScrollBar1);
+            this.todoPanel.Controls.Add(this.checkBox1);
             this.todoPanel.Location = new System.Drawing.Point(10, 90);
             this.todoPanel.Margin = new System.Windows.Forms.Padding(0);
             this.todoPanel.Name = "todoPanel";
             this.todoPanel.Size = new System.Drawing.Size(780, 350);
             this.todoPanel.TabIndex = 1;
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
+            this.vScrollBar1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.vScrollBar1.Location = new System.Drawing.Point(740, 15);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(25, 320);
+            this.vScrollBar1.TabIndex = 1;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(193)))), ((int)(((byte)(217)))));
+            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox1.Location = new System.Drawing.Point(15, 15);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(710, 35);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.TabStop = false;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Index
             // 
@@ -150,18 +178,23 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.todoPanel);
             this.Controls.Add(this.navbar);
-            this.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Location = new System.Drawing.Point(15, 15);
             this.MinimumSize = new System.Drawing.Size(558, 300);
             this.Name = "Index";
-            this.Text = "My Notes";
             this.navbar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.createNewButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.selectedPaneLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.selectedPaneLineMove)).EndInit();
+            this.todoPanel.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.VScrollBar vScrollBar1;
+
+        private System.Windows.Forms.CheckBox checkBox1;
 
         private System.Windows.Forms.PictureBox createNewButton;
 
