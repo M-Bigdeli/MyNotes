@@ -49,6 +49,10 @@ namespace MyNotes
 
             openTodoPanel.ForeColor = Color.FromArgb(41, 50, 65);
             openNotesPanel.ForeColor = Color.FromArgb(238, 108, 77);
+
+            todoPanel.Visible = false;
+            notePanelRight.Visible = true;
+            notePanelLeft.Visible = true;
         }
 
         private void openTodoPanel_Click(object sender, EventArgs e)
@@ -59,25 +63,35 @@ namespace MyNotes
 
             openNotesPanel.ForeColor = Color.FromArgb(41, 50, 65);
             openTodoPanel.ForeColor = Color.FromArgb(238, 108, 77);
+
+            todoPanel.Visible = true;
+            notePanelRight.Visible = false;
+            notePanelLeft.Visible = false;
         }
         
-        // Moving selectedPaneLine with timer.
+        // Moving selectedPaneLine with
         private void selectedPaneLineMove_Elapsed(object sender, ElapsedEventArgs e)
         {
             if (todo_panel_enabled)
             {
-                selectedPaneLine.Left += 5;
                 if (selectedPaneLine.Left >= openTodoPanel.Left)
                 {
                     selectedPaneLineMove.Enabled = false;
                 }
+                else
+                {
+                    selectedPaneLine.Left += 5;
+                }
             }
             else
             {
-                selectedPaneLine.Left -= 5;
                 if (selectedPaneLine.Left <= openNotesPanel.Left)
                 {
                     selectedPaneLineMove.Enabled = false;
+                }
+                else
+                {
+                    selectedPaneLine.Left -= 5;
                 }
             }
         }

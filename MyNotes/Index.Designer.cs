@@ -35,6 +35,9 @@
             this.openNotesPanel = new System.Windows.Forms.Button();
             this.openTodoPanel = new System.Windows.Forms.Button();
             this.selectedPaneLineMove = new System.Timers.Timer();
+            this.todoPanel = new System.Windows.Forms.Panel();
+            this.notePanelRight = new System.Windows.Forms.Panel();
+            this.notePanelLeft = new System.Windows.Forms.Panel();
             this.navbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedPaneLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.selectedPaneLineMove)).BeginInit();
@@ -56,6 +59,7 @@
             // 
             // selectedPaneLine
             // 
+            this.selectedPaneLine.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.selectedPaneLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(108)))), ((int)(((byte)(77)))));
             this.selectedPaneLine.ErrorImage = null;
             this.selectedPaneLine.InitialImage = null;
@@ -114,15 +118,51 @@
             this.selectedPaneLineMove.SynchronizingObject = this;
             this.selectedPaneLineMove.Elapsed += new System.Timers.ElapsedEventHandler(this.selectedPaneLineMove_Elapsed);
             // 
+            // todoPanel
+            // 
+            this.todoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.todoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(251)))), ((int)(((byte)(252)))));
+            this.todoPanel.Location = new System.Drawing.Point(10, 90);
+            this.todoPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.todoPanel.Name = "todoPanel";
+            this.todoPanel.Size = new System.Drawing.Size(780, 350);
+            this.todoPanel.TabIndex = 1;
+            // 
+            // notePanelRight
+            // 
+            this.notePanelRight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
+            this.notePanelRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.notePanelRight.Location = new System.Drawing.Point(10, 90);
+            this.notePanelRight.Margin = new System.Windows.Forms.Padding(0);
+            this.notePanelRight.Name = "notePanelRight";
+            this.notePanelRight.Size = new System.Drawing.Size(250, 350);
+            this.notePanelRight.TabIndex = 2;
+            this.notePanelRight.Visible = false;
+            // 
+            // notePanelLeft
+            // 
+            this.notePanelLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.notePanelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.notePanelLeft.Location = new System.Drawing.Point(280, 90);
+            this.notePanelLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.notePanelLeft.Name = "notePanelLeft";
+            this.notePanelLeft.Size = new System.Drawing.Size(510, 350);
+            this.notePanelLeft.TabIndex = 3;
+            this.notePanelLeft.Visible = false;
+            // 
             // Index
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(90)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.notePanelLeft);
+            this.Controls.Add(this.notePanelRight);
+            this.Controls.Add(this.todoPanel);
             this.Controls.Add(this.navbar);
             this.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(558, 300);
             this.Name = "Index";
             this.Text = "My Notes";
             this.navbar.ResumeLayout(false);
@@ -130,6 +170,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.selectedPaneLineMove)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Panel notePanelLeft;
+
+        private System.Windows.Forms.Panel notePanelRight;
+
+        private System.Windows.Forms.Panel todoPanel;
 
         private System.Timers.Timer selectedPaneLineMove;
 
