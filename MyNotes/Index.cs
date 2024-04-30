@@ -159,12 +159,8 @@ namespace MyNotes
         private void createNewButton_MouseUp(object sender, MouseEventArgs e)
         {
             createNewButton.Image = MyNotes.Properties.Resources.plus_01;
-
-            connect_db.Open();
-            OleDbCommand cmd = new OleDbCommand("INSERT INTO Todo ( todo_text , is_done ) VALUES ('new todo!' , 1)",
-                connect_db);
-            cmd.ExecuteNonQuery();
-            connect_db.Close();
+            
+            new CreateTodo().ShowDialog();
             show_todos();
         }
 

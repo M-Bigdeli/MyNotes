@@ -177,7 +177,6 @@
             // Index
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(90)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.todoPanel);
@@ -188,6 +187,7 @@
             this.Location = new System.Drawing.Point(15, 15);
             this.MinimumSize = new System.Drawing.Size(558, 300);
             this.Name = "Index";
+            this.Text = "My Notes";
             this.navbar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.createNewButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.selectedPaneLine)).EndInit();
