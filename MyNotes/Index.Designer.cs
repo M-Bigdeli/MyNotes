@@ -37,7 +37,7 @@
             this.openTodoPanel = new System.Windows.Forms.Button();
             this.selectedPaneLineMove = new System.Timers.Timer();
             this.todoPanel = new System.Windows.Forms.Panel();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.todosScroler = new System.Windows.Forms.VScrollBar();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.navbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.createNewButton)).BeginInit();
@@ -140,7 +140,7 @@
             // 
             this.todoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.todoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(251)))), ((int)(((byte)(252)))));
-            this.todoPanel.Controls.Add(this.vScrollBar1);
+            this.todoPanel.Controls.Add(this.todosScroler);
             this.todoPanel.Controls.Add(this.checkBox1);
             this.todoPanel.Location = new System.Drawing.Point(10, 90);
             this.todoPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -148,14 +148,17 @@
             this.todoPanel.Size = new System.Drawing.Size(780, 350);
             this.todoPanel.TabIndex = 1;
             // 
-            // vScrollBar1
+            // todosScroler
             // 
-            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
-            this.vScrollBar1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.vScrollBar1.Location = new System.Drawing.Point(740, 15);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(25, 320);
-            this.vScrollBar1.TabIndex = 1;
+            this.todosScroler.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
+            this.todosScroler.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.todosScroler.LargeChange = 1;
+            this.todosScroler.Location = new System.Drawing.Point(740, 15);
+            this.todosScroler.Maximum = 0;
+            this.todosScroler.Name = "todosScroler";
+            this.todosScroler.Size = new System.Drawing.Size(25, 320);
+            this.todosScroler.TabIndex = 1;
+            this.todosScroler.ValueChanged += new System.EventHandler(this.todosScroler_ValueChanged);
             // 
             // checkBox1
             // 
@@ -174,6 +177,7 @@
             // Index
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(90)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.todoPanel);
@@ -192,7 +196,7 @@
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.VScrollBar todosScroler;
 
         private System.Windows.Forms.CheckBox checkBox1;
 

@@ -33,7 +33,7 @@ namespace MyNotes
             connect_db.Open();
             OleDbCommand select = new OleDbCommand();
             select.Connection = connect_db;
-            select.CommandText = "Select * From Todo;";
+            select.CommandText = "Select * From Todo ORDER BY ID DESC;";
             OleDbDataReader reader = select.ExecuteReader();
             return reader;
         }
@@ -49,17 +49,19 @@ namespace MyNotes
             }
 
             CheckBox todo;
-            int y = 15;
+            int top = 15;
+            todosScroler.Maximum = 0;
             while (data.Read())
             {
                 todo = new CheckBox();
                 todo.Name = "todo_" + data[0].ToString();
-                todo.Text = data[2].ToString();
-                todo.Top = y;
-                y = y + 35 + 15;
-                todo.Left = 15;
+                todo.Text = data[1].ToString();
                 todo.Width = 710;
                 todo.Height = 35;
+                todo.Top = top;
+                top = top + todo.Height + 15;
+                todo.Left = 15;
+                todosScroler.Maximum += 1;
                 
                 todo.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
                 todo.BackColor = Color.FromArgb(152, 193, 217);
@@ -159,11 +161,23 @@ namespace MyNotes
             createNewButton.Image = MyNotes.Properties.Resources.plus_01;
 
             connect_db.Open();
-            OleDbCommand cmd = new OleDbCommand("INSERT INTO Todo ( todo_text , is_done ) VALUES ('dffhdf' , 1)",
+            OleDbCommand cmd = new OleDbCommand("INSERT INTO Todo ( todo_text , is_done ) VALUES ('new todo!' , 1)",
                 connect_db);
             cmd.ExecuteNonQuery();
             connect_db.Close();
             show_todos();
+        }
+
+        // scrole todos.
+        private void todosScroler_ValueChanged(object sender, EventArgs e)
+        {
+            int top = 15 - todosScroler.Value * 50;
+            foreach (CheckBox i in todoPanel.Controls.OfType<CheckBox>().ToList())
+            {
+                //i.Top += todosScroler.Value;
+                i.Top = top;
+                top = top + i.Height + 15;
+            }
         }
     }
 }
