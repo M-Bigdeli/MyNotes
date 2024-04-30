@@ -26,7 +26,7 @@ namespace MyNotes
         private void ok_Click(object sender, EventArgs e)
         {
             connect_db.Open();
-            OleDbCommand cmd = new OleDbCommand("INSERT INTO Todo ( todo_text , is_done ) VALUES ('"+ textBox1.Text +"!' , 1);",
+            OleDbCommand cmd = new OleDbCommand("INSERT INTO Todo ( todo_text , is_done ) VALUES ('"+ textBox1.Text +"!' , 0);",
                 connect_db);
             cmd.ExecuteNonQuery();
             connect_db.Close();

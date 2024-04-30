@@ -55,6 +55,7 @@ namespace MyNotes
             {
                 todo = new CheckBox();
                 todo.Name = "todo_" + data[0].ToString();
+                todo.Checked = bool.Parse(data[2].ToString());
                 todo.Text = data[1].ToString();
                 todo.Width = 710;
                 todo.Height = 35;
@@ -62,15 +63,17 @@ namespace MyNotes
                 top = top + todo.Height + 15;
                 todo.Left = 15;
                 todosScroler.Maximum += 1;
-                
+
                 todo.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
                 todo.BackColor = Color.FromArgb(152, 193, 217);
                 todo.Cursor = Cursors.Hand;
                 todo.Margin = new Padding(0);
                 todo.TabStop = false;
                 todo.UseVisualStyleBackColor = false;
+                todo.CheckedChanged += Todos_CheckedChanged;
                 todoPanel.Controls.Add(todo);
             }
+
             connect_db.Close();
         }
 
@@ -159,9 +162,31 @@ namespace MyNotes
         private void createNewButton_MouseUp(object sender, MouseEventArgs e)
         {
             createNewButton.Image = MyNotes.Properties.Resources.plus_01;
-            
+
             new CreateTodo().ShowDialog();
             show_todos();
+        }
+
+        private void Todos_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox check_box = (CheckBox)sender;
+            connect_db.Open();
+            OleDbCommand cmd;
+            if (check_box.Checked)
+            {
+                cmd = new OleDbCommand(
+                    "UPDATE Todo set is_done=" + "1" + " WHERE ID=" + check_box.Name.Split('_')[1],
+                    connect_db);
+            }
+            else
+            {
+                cmd = new OleDbCommand(
+                    "UPDATE Todo set is_done=" + "0" + " WHERE ID=" + check_box.Name.Split('_')[1],
+                    connect_db);
+            }
+
+            cmd.ExecuteNonQuery();
+            connect_db.Close();
         }
 
         // scrole todos.
